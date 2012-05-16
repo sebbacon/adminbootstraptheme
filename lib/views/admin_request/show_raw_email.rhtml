@@ -1,0 +1,37 @@
+<% @title = 'Incoming message ' + @raw_email.incoming_message.id.to_s + ' of FOI request \'' + h(@raw_email.incoming_message.info_request.title) + "'" %>
+
+<h1>Incoming message <%=@raw_email.incoming_message.id.to_s %></h1>
+
+<p>
+    FOI request: <%= request_both_links(@raw_email.incoming_message.info_request) %>
+    <% if @holding_pen %> 
+        <br>This is in the holding pen because: <strong><%= @rejected_reason %></strong>
+        <% if @public_bodies.size > 0 %>
+            <br>Guessed authority:
+            <% for public_body in @public_bodies %>
+                <%=public_body_both_links(public_body)%> 
+            <% end %>
+            (based on From: email domain)
+        <% end %>
+        <% if @info_requests.size > 0 %>
+            <br>Guessed request:
+            <% for info_request in @info_requests %>
+                <%=request_both_links(info_request)%> 
+            <% end %>
+            (based on id, not hash, in To/Cc email)
+        <% end %>
+    <% end %>
+</p>
+
+<h2>Actions</h2>
+
+<div>
+    <%= render :partial => 'incoming_message_actions', :locals => { :incoming_message => @raw_email.incoming_message } %>
+</div>
+
+<h2>Raw email</h2>
+
+<p><%= link_to "Download", "../download_raw_email/" + @raw_email.id.to_s %></p>
+
+<pre><%=h(@raw_email.data).gsub(/\n/, '<br>') %></pre>
+
