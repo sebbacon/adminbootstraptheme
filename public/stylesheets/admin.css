@@ -1343,6 +1343,8 @@ a.label:hover, a.badge:hover { color: white; text-decoration: none; cursor: poin
 
 table .form { display: inline-block; margin: 0; }
 
+.accordion-group { border: none; }
+
 .accordion-heading .btn { float: left; margin: 6px 15px; }
 .accordion-heading .accordion-toggle { padding: 2px; }
 .accordion-heading .accordion-toggle:hover { text-decoration: none; }
