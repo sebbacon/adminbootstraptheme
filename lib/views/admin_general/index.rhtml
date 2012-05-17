@@ -12,7 +12,7 @@
         <a class="accordion-toggle" href="#holding-pen" data-toggle="collapse" data-parent="things-to-do"><span class="label label-important"><%=@holding_pen_messages.size%></span> Put misdelivered responses with the right request</a>
       </div>
       <div id="holding-pen" class="accordion-body collapse">
-        <table class="table table-striped">
+        <table class="table table-striped table-condensed">
           <tbody>
             <% for message in @holding_pen_messages %>
               <tr>
@@ -40,7 +40,7 @@
         <a class="accordion-toggle" href="#error-messages" data-toggle="collapse" data-parent="things-to-do"><span class="label label-important"><%=@error_message_requests.size%></span> Fix these delivery and other errors</a>
       </div>
       <div id="error-messages" class="accordion-body collapse">
-        <table class="table table-striped">
+        <table class="table table-striped table-condensed">
           <tbody>
             <% for @request in @error_message_requests %>
               <tr>
@@ -65,7 +65,7 @@
         <a class="accordion-toggle" href="#requires-admin" data-toggle="collapse" data-parent="things-to-do"><span class="label label-important"><%=@requires_admin_requests.size%></span> These require administrator attention</a>
       </div>
       <div id="requires-admin" class="accordion-body collapse">
-        <table class="table table-striped">
+        <table class="table table-striped table-condensed">
           <tbody>
             <% for @request in @requires_admin_requests %>
               <tr>
@@ -90,7 +90,7 @@
         <a class="accordion-toggle" href="#blank-contacts" data-toggle="collapse" data-parent="things-to-do"><span class="label label-important"><%=@blank_contacts.size%></span> Find missing FOI email for these public authorities (try phoning!)</a>
       </div>
       <div id="blank-contacts" class="accordion-body collapse">
-        <table class="table table-striped">
+        <table class="table table-striped table-condensed">
           <tbody>
             <% for @blank_contact in @blank_contacts %>
               <tr>
@@ -115,7 +115,7 @@
         <a class="accordion-toggle" href="#unclassified" data-toggle="collapse" data-parent="things-to-do"><span class="label label-important"><%=@old_unclassified.size%></span> Classify responses that are still unclassified <%=InfoRequest::OLD_AGE_IN_DAYS.inspect %> after response</a>
       </div>
       <div id="unclassified" class="accordion-body collapse">
-        <table class="table table-striped">
+        <table class="table table-striped table-condensed">
           <tbody>
             <% for @request in @old_unclassified %>
                 <tr>

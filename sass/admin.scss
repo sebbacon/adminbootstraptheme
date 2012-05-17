@@ -19,10 +19,10 @@ table .form {
     float: left;
     margin: 6px 15px;
   }
-
-}
-.accordion-toggle {
-  &:hover {
-    text-decoration: none;
-  }
+  .accordion-toggle {
+    padding: 2px;
+    &:hover {
+      text-decoration: none;
+    }
+  } 
 }

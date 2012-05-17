@@ -8,7 +8,7 @@
         <%= link_to('<i class="icon-pencil"></i>'.html_safe, user_admin_url(user))%>
       </div>
       <div id="user_<%=user.id%>" class="accordion-body collapse">
-        <table class="table table-striped">
+        <table class="table table-striped table-condensed">
           <tbody>
             <% user.for_admin_column do |name, value, type|%>
               <tr>
