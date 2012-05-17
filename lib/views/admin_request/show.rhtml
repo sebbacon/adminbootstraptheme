@@ -248,9 +248,9 @@
                   </td>
                   <td>
                     <% if column_name == 'body' && !comment.visible %>
-                      <s><%=h comment.send(column) %></s>
+                      <s><%=h comment.send(column_name) %></s>
                     <% else %>
-                      <%=h comment.send(column) %>
+                      <%=h comment.send(column_name) %>
                     <% end %>
                   </td>
                 </tr>
