@@ -44,11 +44,9 @@
           <tbody>
             <% for @request in @error_message_requests %>
               <tr>
-                <td>
-                  <%= link_to("admin", request_admin_url(@request), :class => "btn btn-primary btn-mini")%>
-                </td>
                 <td class="link">
                   <%= request_link(@request)%>
+                  <%= link_to("admin", request_admin_url(@request), :class => "btn btn-primary btn-mini")%>
                 </td>
                 <td class="span2">
                   <%=simple_date(@request.get_last_event.created_at)%>
@@ -71,11 +69,9 @@
           <tbody>
             <% for @request in @requires_admin_requests %>
               <tr>
-                <td>
-                  <%= link_to("admin", request_admin_url(@request), :class => "btn btn-primary btn-mini")%>
-                </td>
                 <td class="link">
                   <%= request_link(@request)%>
+                  <%= link_to("admin", request_admin_url(@request), :class => "btn btn-primary btn-mini")%>
                 </td>
                 <td class="span2">
                   <%=simple_date(@request.get_last_event.created_at)%>
@@ -98,11 +94,9 @@
           <tbody>
             <% for @blank_contact in @blank_contacts %>
               <tr>
-                <td>
-                  <%= link_to("admin", public_body_admin_url(@blank_contact), :class => "btn btn-primary btn-mini")%>
-                </td>
                 <td class="link">
                   <%= public_body_link(@blank_contact)%>
+                  <%= link_to("admin", public_body_admin_url(@blank_contact), :class => "btn btn-primary btn-mini")%>
                 </td>
                 <td class="span2">
                   <%=simple_date(@blank_contact.updated_at)%>
@@ -125,11 +119,9 @@
           <tbody>
             <% for @request in @old_unclassified %>
                 <tr>
-                  <td>
-                    <%= link_to("admin", request_admin_url(@request), :class => "btn btn-primary btn-mini")%>
-                  </td>
                   <td class="link">
                     <%= request_link(@request)%>
+                    <%= link_to("<i class='icon-pencil'></i>".html_safe, request_admin_url(@request)) %>
                   </td>
                   <td class="span2">
                     <%=simple_date(@request.get_last_response_event.created_at)%>
