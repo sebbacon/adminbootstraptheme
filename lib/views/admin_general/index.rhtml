@@ -46,7 +46,7 @@
               <tr>
                 <td class="link">
                   <%= request_link(@request)%>
-                  <%= link_to("admin", request_admin_url(@request), :class => "btn btn-primary btn-mini")%>
+                  <%= link_to('<i class="icon-pencil"></i>'.html_safe, request_admin_url(@request))%>
                 </td>
                 <td class="span2">
                   <%=simple_date(@request.get_last_event.created_at)%>
@@ -71,7 +71,7 @@
               <tr>
                 <td class="link">
                   <%= request_link(@request)%>
-                  <%= link_to("admin", request_admin_url(@request), :class => "btn btn-primary btn-mini")%>
+                  <%= link_to('<i class="icon-pencil"></i>'.html_safe, request_admin_url(@request))%>
                 </td>
                 <td class="span2">
                   <%=simple_date(@request.get_last_event.created_at)%>
@@ -96,7 +96,7 @@
               <tr>
                 <td class="link">
                   <%= public_body_link(@blank_contact)%>
-                  <%= link_to("admin", public_body_admin_url(@blank_contact), :class => "btn btn-primary btn-mini")%>
+                  <%= link_to('<i class="icon-pencil"></i>'.html_safe, public_body_admin_url(@blank_contact))%>
                 </td>
                 <td class="span2">
                   <%=simple_date(@blank_contact.updated_at)%>

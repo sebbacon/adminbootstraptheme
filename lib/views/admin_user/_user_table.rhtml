@@ -1,11 +1,11 @@
 <div class="accordion" id="users">
   <% for user in users %>
     <div class="accordion-group">
-      <div class="accordion-heading">
-        <%= link_to("admin", user_admin_url(user), :class => "btn btn-primary btn-mini")%>
-        <a class="accordion-toggle" href="#user_<%=user.id%>" data-toggle="collapse" data-parent="users">
+      <div class="accordion-heading accordion-toggle">
+        <a href="#user_<%=user.id%>" data-toggle="collapse" data-parent="users">
           <%=h user.name%> (<%=user.email%>)
         </a>
+        <%= link_to('<i class="icon-pencil"></i>'.html_safe, user_admin_url(user))%>
       </div>
       <div id="user_<%=user.id%>" class="accordion-body collapse">
         <table class="table table-striped">

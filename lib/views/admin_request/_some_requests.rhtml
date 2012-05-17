@@ -1,11 +1,11 @@
 <div class="accordion" id="requests">
   <% for info_request in info_requests %>
     <div class="accordion-group">
-      <div class="accordion-heading">
-        <%= link_to("admin", request_admin_url(info_request), :class => "btn btn-primary btn-mini") %>
-        <a class="accordion-toggle" href="#request_<%=info_request.id%>" data-toggle="collapse" data-parent="requests">
+      <div class="accordion-heading accordion-toggle">
+        <a href="#request_<%=info_request.id%>" data-toggle="collapse" data-parent="requests">
           <%=info_request.title%>
         </a>
+        <%= link_to('<i class="icon-pencil"></i>'.html_safe, request_admin_url(info_request)) %>
       </div>
       <div id="request_<%=info_request.id%>" class="accordion-body collapse">
         <table class="table table-striped">

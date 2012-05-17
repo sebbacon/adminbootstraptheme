@@ -1,11 +1,11 @@
 <div class="accordion" id="bodies">
   <% for public_body in bodies %>
     <div class="accordion-group">
-      <div class="accordion-heading">
-        <%= link_to("admin", public_body_admin_url(public_body), :class => "btn btn-primary btn-mini")%>
-        <a class="accordion-toggle" href="#body_<%=public_body.id%>" data-toggle="collapse" data-parent="bodies">
+      <div class="accordion-heading accordion-toggle">
+        <a href="#body_<%=public_body.id%>" data-toggle="collapse" data-parent="bodies">
           <%=public_body.name%>
         </a>
+        <%= link_to('<i class="icon-pencil"></i>'.html_safe, public_body_admin_url(public_body))%>
       </div>
       <div id="body_<%=public_body.id%>" class="accordion-body collapse">
         <table class="table table-striped">
