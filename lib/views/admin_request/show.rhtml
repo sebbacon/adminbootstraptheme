@@ -83,7 +83,7 @@
 <%= link_to 'Public page', main_url(request_url(@info_request)), :class => "btn" %>
 <%= link_to 'Edit', '../edit/' + @info_request.id.to_s, :class => "btn" %>
 <%= link_to 'FOI officer upload URL', '../generate_upload_url/' + @info_request.id.to_s, :class => "btn btn-warning" %> (see also links on incoming messages below)
-
+<hr>
 <h2>Events</h2>
 <div class="accordion" id="events">
   <% for info_request_event in @info_request.info_request_events.find(:all, :order => "created_at, id") %>
@@ -131,7 +131,7 @@
     </div>
   <% end %>
 </div>
-
+<hr>
 <h2>Outgoing messages</h2>
 <div class="accordion" id="outgoing_messages">
   <% for outgoing_message in @info_request.outgoing_messages.find(:all, :order => 'created_at') %>
@@ -174,7 +174,7 @@
     </div>
   <% end %>
 </div>
-
+<hr>
 <h2>Incoming messages</h2>
 <div class="accordion">
   <% for incoming_message in @info_request.incoming_messages.find(:all, :order => 'created_at') %>
@@ -216,7 +216,7 @@
     </div>
   <% end %>
 </div>
-
+<hr>
 <h2>Annotations</h2>
 
 <% if @info_request.comments.size > 0 %>
@@ -264,7 +264,7 @@
 <% else %>
   <p>None yet.</p>
 <% end %>
-
+<hr>
 <h2>Exim delivery logs</h2>
 
 <p><i>(Lines containing the request incoming email address, updated hourly.)</i></p>

@@ -51,7 +51,7 @@
 <% else %>
   <%=_("Public page not available")%>
 <% end %>
-
+<hr>
 <h2>History</h2>
 <%# There may be an option to versions() to specify order, but I can't find it. TB 2009-03-09 %>
 <% versions = @public_body.reverse_sorted_versions; versions.each_with_index do |historic_public_body, i| %>
@@ -100,9 +100,9 @@
   </div>
 <% end %>
 </table>
-
+<hr>
 <h2>Requests</h2>
 <%= render :partial => 'admin_request/some_requests', :locals => { :info_requests => @public_body.info_requests } %>
-
+<hr>
 <h2>Track things</h2>
 <%= render :partial => 'admin_track/some_tracks', :locals => { :track_things => @public_body.track_things, :include_destroy => true } %>
