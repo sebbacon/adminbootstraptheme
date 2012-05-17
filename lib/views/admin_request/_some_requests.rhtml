@@ -10,12 +10,15 @@
       <div id="request_<%=info_request.id%>" class="accordion-body collapse">
         <table class="table table-striped table-condensed">
           <tbody>
-            <tr>
-              <td colspan="2">
-                <%= link_to("admin #{info_request.public_body.name}", public_body_admin_url(info_request.public_body), :class => "btn btn-mini") %>
-                <%= link_to("admin #{info_request.user.name}", user_admin_url(info_request.user), :class => "btn btn-mini") %>
-              </td>
+	    <tr>
+	        <th>Requested by</th>
+		<td><%= link_to("#{info_request.user.name}", user_admin_url(info_request.user))%></td>
             </tr>
+	    <tr>
+	        <th>Made to</th>
+                <td><%= link_to("#{info_request.public_body.name}", public_body_admin_url(info_request.public_body)) %></td>
+            </tr>
+
             <% info_request.for_admin_column do | name, value, type | %>
               <tr>
                 <td>
