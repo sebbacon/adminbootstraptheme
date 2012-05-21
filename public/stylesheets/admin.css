@@ -1350,3 +1350,5 @@ table .form { display: inline-block; margin: 0; }
 .accordion-heading .btn { float: left; margin: 6px 15px; }
 .accordion-heading .accordion-toggle { padding: 2px; }
 .accordion-heading .accordion-toggle:hover { text-decoration: none; }
+
+div.item-detail div:nth-child(odd) span { background-color: #eee; }

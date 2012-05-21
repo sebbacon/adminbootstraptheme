@@ -33,3 +33,7 @@ table .form {
     }
   } 
 }
+
+div.item-detail div:nth-child(odd) span {
+  background-color: #eee;
+}
