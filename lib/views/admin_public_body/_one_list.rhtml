@@ -3,7 +3,8 @@
     <div class="accordion-group">
       <div class="accordion-heading accordion-toggle row">
        <span class="item-title span6">
-        <%= link_to('<i class="icon-pencil"></i>'.html_safe, public_body_admin_url(public_body))%>
+        <%= link_to('<i class="icon-eye-open"></i>'.html_safe, public_body_admin_url(public_body), :title => "view full details")%>
+        <%= link_to('<i class="icon-pencil"></i>'.html_safe, admin_url('body/edit/' + public_body.id.to_s), :title => "edit")%>
         <a href="#body_<%=public_body.id%>" data-toggle="collapse" data-parent="bodies">
           <%=public_body.name%>
         </a>

@@ -3,7 +3,9 @@
     <div class="accordion-group">
       <div class="accordion-heading accordion-toggle row">
        <span class="item-title span6">
-        <%= link_to('<i class="icon-pencil"></i>'.html_safe, request_admin_url(info_request)) %>
+        <%= link_to('<i class="icon-eye-open"></i>'.html_safe, request_admin_url(info_request), :title => "view full details") %>
+        <%= link_to('<i class="icon-pencil"></i>'.html_safe, admin_url("request/edit/" + info_request.id.to_s), :title => "edit") %>
+
         <a href="#request_<%=info_request.id%>" data-toggle="collapse" data-parent="requests">
           <%=info_request.title%>
         </a>
