@@ -45,8 +45,8 @@
             <% for @request in @error_message_requests %>
               <tr>
                 <td class="link">
-                  <%= request_link(@request)%>
                   <%= link_to('<i class="icon-pencil"></i>'.html_safe, request_admin_url(@request))%>
+                  <%= request_link(@request)%>
                 </td>
                 <td class="span2">
                   <%=simple_date(@request.get_last_event.created_at)%>
