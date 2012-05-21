@@ -38,6 +38,9 @@ div.item-detail div:nth-child(odd) span {
   background-color: #eee;
 }
 
-span.label.tag a {
- color: white;
+span.label.tag{ 
+ margin-right: 2px;
+ a {
+  color: white;
+ }
 }
