@@ -31,7 +31,9 @@
     <%= simple_time(event.created_at) %>
 
     <% if event.class.to_s == 'InfoRequestEvent' %>
-        <%= request_both_links(event.info_request) %>
+        <%= link_to('<i class="icon-tags"></i>'.html_safe, request_admin_url(event.info_request), :title => "view full details")%>
+        <%= link_to(event.info_request.title, request_url(event.info_request), :title => "view request on public website")%>
+
         <% if event.event_type == 'edit' %>
             was edited by administrator <strong><%=h event.params[:editor] %></strong>.
             <% for p in ['title', 'prominence', 'described_state', 'awaiting_description']
@@ -93,7 +95,8 @@
             had '<%=event.event_type%>' done to it, parameters <%=h event.params_yaml%>.
         <% end %>
     <% else %>
-        <%= public_body_both_links(event.public_body) %>
+        <%= link_to('<i class="icon-tags"></i>'.html_safe, public_body_admin_url(event.public_body), :title => "view full details")%>
+        <%= link_to(event.public_body.name, public_body_url(event.public_body), :title => "view authority on public website")%>
         was created/updated by administrator <strong><%=h event.last_edit_editor %></strong>
     <% end %>
 <% end %>
