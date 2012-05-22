@@ -17,8 +17,6 @@
 
 <% form_tag '../destroy_incoming', :class => "form form-inline" do %>
   <%= hidden_field_tag 'incoming_message_id', incoming_message.id %>
-  <span class="label label-important">
-    Warning, this is permanent! &nbsp;
-  </span>
   <%= submit_tag "Destroy message", :class => "btn btn-danger" %>
+  Warning, this is permanent!
 <% end %>
