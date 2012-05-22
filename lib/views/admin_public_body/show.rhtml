@@ -65,41 +65,21 @@
       <%= I18n.l(historic_public_body.updated_at, :format => "%e %B %Y %H:%M:%S") %>
       (<%= _('{{length_of_time}} ago', :length_of_time => time_ago_in_words(historic_public_body.updated_at)) %>)
     </div>
+   <% if i == versions.length - 1 %>
     <div class="span6">
-      <% if i == versions.length - 1 %>
-        <div class="row">
-          <div class="span6">
-            <%=_("This is the first version.")%>
-          </div>
-        </div>
-      <% else %>
-          <%historic_public_body.compare(versions[i+1]) do |change|%>
-            <div class="row">
-              <div class="span6">
-                <b><%=change[:name]%> <%=_("was updated:")%></b>
-              </div>
-            </div>
-            <div class="row">
-              <div class="span5 offset1">
-                <div class="row">
-                  <div class="span5">
-                    <span class="label label-warning"><%=_("From:")%></span> <%=change[:from]%>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="span5">
-                    <span class="label label-info"><%=_("To:")%></span> <%=change[:to]%>
-                  </div>
-                </div>
-              </div>
-            </div>
-          <%end%>
-        </ul>
-      <% end %>
+      <%=_("This is the first version.")%>
     </div>
+   <% else %>
+    <div class="span6">
+    <ul>
+    <%historic_public_body.compare(versions[i+1]) do |change|%>
+      <li><%= _("{{thing_changed}} was changed from <code>{{from_value}}</code> to <code>{{to_value}}</code>", :thing_changed => change[:name], :from_value => (change[:from] or "-"), :to_value => (change[:to] or "-")) %></li>
+    <%end%>
+    </ul>
+    </div>
+   <% end %>
   </div>
 <% end %>
-</table>
 <hr>
 <h2>Requests</h2>
 <%= render :partial => 'admin_request/some_requests', :locals => { :info_requests => @public_body.info_requests } %>
