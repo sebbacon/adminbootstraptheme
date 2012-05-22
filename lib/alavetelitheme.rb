@@ -16,9 +16,6 @@ end
 end
 
 # Monkey patch app code
-require 'controller_patches.rb'
-require 'model_patches.rb'
-
-# Extend routes
-require 'config/custom-routes.rb'
-
+for patch in ['controller_patches.rb', 'model_patches.rb', 'config/custom-routes.rb']
+    require File.expand_path "../#{patch}", __FILE__
+end
