@@ -150,6 +150,9 @@
         <a href="#outgoing_<%=outgoing_message.id%>" data-toggle="collapse" data-parent="outgoing_messages">
           #<%= outgoing_message.id %> -- <%= outgoing_message.status.humanize %> <%= outgoing_message.message_type.humanize %>
         </a>
+	<blockquote>
+	  <%= truncate(outgoing_message.body, :length => 400) %>
+	</blockquote>
       </div>
       <div id="outgoing_<%=outgoing_message.id%>" class="accordion-body collapse">
         <table class="table table-striped table-condensed">
@@ -193,7 +196,7 @@
           <%=incoming_message.id%> -- <%= h(incoming_message.mail_from) %> <%=_("at")%> <%=admin_value(incoming_message.sent_at)%>
         </a>
 	<blockquote class="incoming-message">
-	  <%= simple_format(truncate(incoming_message.cached_main_body_text_folded.gsub('FOLDED_QUOTED_SECTION', ''), :length => 400)) %>
+	  <%= truncate(incoming_message.cached_main_body_text_folded.gsub('FOLDED_QUOTED_SECTION', ''), :length => 400) %>
 	</blockquote>
       </div>
       <div id="incoming_<%=incoming_message.id%>" class="accordion-body collapse">
@@ -246,7 +249,7 @@
             <%=admin_value(comment.created_at)%>
           </a>
 	<blockquote class="incoming-message">
-	  <%= simple_format(truncate(comment.body, :length => 400)) %>
+	  <%= truncate(comment.body, :length => 400) %>
 	</blockquote>
         </div>
         <div id="comment_<%=comment.id%>" class="accordion-body collapse">
