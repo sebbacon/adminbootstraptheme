@@ -51,3 +51,10 @@ body.admin blockquote p {
  font-size: 13px;
  display: inline;
 }
+
+div#user_locale_switcher {
+  div.btn-group:before, 
+  div.btn-group:after {
+    display: inline;
+  }
+}
