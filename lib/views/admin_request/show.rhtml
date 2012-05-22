@@ -143,7 +143,8 @@
   <% for outgoing_message in @info_request.outgoing_messages.find(:all, :order => 'created_at') %>
     <div class="accordion-group">
       <div class="accordion-heading">
-        <a class="accordion-toggle" href="#outgoing_<%=outgoing_message.id%>" data-toggle="collapse" data-parent="outgoing_messages">
+       <%= link_to("<i class='icon-pencil'></i>".html_safe, "../edit_outgoing/#{outgoing_message.id}") %>
+        <a href="#outgoing_<%=outgoing_message.id%>" data-toggle="collapse" data-parent="outgoing_messages">
           #<%= outgoing_message.id %> -- <%= outgoing_message.status.humanize %> <%= outgoing_message.message_type.humanize %>
         </a>
       </div>

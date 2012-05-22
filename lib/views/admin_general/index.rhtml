@@ -46,7 +46,8 @@
               <tr>
                 <td class="link">
                   <%= link_to('<i class="icon-pencil"></i>'.html_safe, request_admin_url(@request))%>
-                  <%= request_link(@request)%>
+                  <%= link_to("<i class='icon-eye-open'></i>".html_safe, request_url(@request)) %>
+                  <%= @request.title %>
                 </td>
                 <td class="span2">
                   <%=simple_date(@request.get_last_event.created_at)%>
@@ -70,8 +71,9 @@
             <% for @request in @requires_admin_requests %>
               <tr>
                 <td class="link">
+                  <%= link_to("<i class='icon-eye-open'></i>".html_safe, request_url(@request)) %>
                   <%= link_to('<i class="icon-pencil"></i>'.html_safe, request_admin_url(@request))%>
-                  <%= request_link(@request)%>
+                  <%= @request.title %>
                 </td>
                 <td class="span2">
                   <%=simple_date(@request.get_last_event.created_at)%>
@@ -121,7 +123,8 @@
                 <tr>
                   <td class="link">
                     <%= link_to("<i class='icon-pencil'></i>".html_safe, request_admin_url(@request)) %>
-                    <%= request_link(@request)%>
+                    <%= link_to("<i class='icon-eye-open'></i>".html_safe, request_url(@request)) %>
+                    <%= request_link(@request) %>
                   </td>
                   <td class="span2">
                     <%=simple_date(@request.get_last_response_event.created_at)%>
