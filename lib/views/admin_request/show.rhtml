@@ -155,7 +155,7 @@
               <td colspan="2">
                 <% form_tag '../resend', :class => "admin-table-form" do %>
                   <%= hidden_field_tag 'outgoing_message_id', outgoing_message.id %>
-                  <%= submit_tag "Resend", :class => "btn btn-warning" %>
+                  <%= submit_tag "Resend", :class => "btn" %>
                 <% end %>
                 <%= link_to "Edit", "../edit_outgoing/#{outgoing_message.id}", :class => "btn btn-warning" %>
               </td>
