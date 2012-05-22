@@ -34,8 +34,10 @@ table .form {
   } 
 }
 
-div.item-detail div:nth-child(odd) span {
-  background-color: #eee;
+div.item-detail {
+  div:nth-child(odd) span {
+    background-color: #eee;
+  }
 }
 
 span.label.tag{ 
