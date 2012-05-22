@@ -1355,3 +1355,5 @@ div.item-detail div:nth-child(odd) span { background-color: #eee; }
 
 span.label.tag { margin-right: 2px; }
 span.label.tag a { color: white; }
+
+blockquote.incoming-message p { font-size: 13px; }

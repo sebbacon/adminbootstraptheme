@@ -157,7 +157,6 @@
                   <%= hidden_field_tag 'outgoing_message_id', outgoing_message.id %>
                   <%= submit_tag "Resend", :class => "btn" %>
                 <% end %>
-                <%= link_to "Edit", "../edit_outgoing/#{outgoing_message.id}", :class => "btn btn-warning" %>
               </td>
             </tr>
             <% outgoing_message.for_admin_column do |name, value, type, column_name| %>
@@ -188,11 +187,24 @@
     <div class="accordion-group">
       <div class="accordion-heading">
         <a class="accordion-toggle" href="#incoming_<%=incoming_message.id%>" data-toggle="collapse" data-parent="incoming_messages">
-          <%=incoming_message.id%> -- <%=incoming_message.mail_from%> <%=_("at")%> <%=admin_value(incoming_message.sent_at)%>
+          <%=incoming_message.id%> -- <%= h(incoming_message.mail_from) %> <%=_("at")%> <%=admin_value(incoming_message.sent_at)%>
         </a>
+	<blockquote class="incoming-message">
+	  <%= simple_format(truncate(incoming_message.cached_main_body_text_folded.gsub('FOLDED_QUOTED_SECTION', ''), :length => 400)) %>
+	</blockquote>
       </div>
       <div id="incoming_<%=incoming_message.id%>" class="accordion-body collapse">
         <table class="table table-striped table-condensed">
+          <thead>
+            <tr>
+              <td colspan="2" class="well">
+                <%= render :partial => 'incoming_message_actions', :locals => { :incoming_message => incoming_message } %>
+                <% unless incoming_message.raw_email_id.nil? %>
+                  <br><%= link_to "View raw email", "../show_raw_email/#{incoming_message.raw_email_id}", :class => "btn" %>
+                <% end %>
+              </td>
+            </tr>
+          </thead>
           <tbody>
             <% incoming_message.for_admin_column do |name, value, type, column_name| %>
               <tr>
@@ -209,14 +221,6 @@
                 </td>
               </tr>
             <% end %>
-            <tr>
-              <td colspan="2">
-                <% unless incoming_message.raw_email_id.nil? %>
-                  <%= link_to "View raw email", "../show_raw_email/#{incoming_message.raw_email_id}", :class => "btn btn-mini" %>
-                <% end %>
-                <%= render :partial => 'incoming_message_actions', :locals => { :incoming_message => incoming_message } %>
-              </td>
-            </tr>
           </tbody>
         </table>
       </div>
@@ -231,21 +235,25 @@
     <% for comment in @info_request.comments %>
       <div class="accordion-group">
         <div class="accordion-heading">
-          <a class="accordion-toggle" href="#comment_<%=comment.id%>" data-toggle="collapse" data-parent="comments">
+          <%= link_to("<i class='icon-pencil'></i>".html_safe, "../edit_comment/#{comment.id}") %>
+          <a href="#comment_<%=comment.id%>" data-toggle="collapse" data-parent="comments">
             #<%=comment.id%>
             --
-            <%=comment.user.name%>
+            <%=h(comment.user.name)%>
             <%=admin_value(comment.created_at)%>
           </a>
+	<blockquote class="incoming-message">
+	  <%= simple_format(truncate(comment.body, :length => 400)) %>
+	</blockquote>
         </div>
         <div id="comment_<%=comment.id%>" class="accordion-body collapse">
           <table class="table table-striped table-condensed">
             <tbody>
               <tr>
                 <td colspan="2">
-                  <%= user_link(comment.user, "btn btn-mini")%>
-                  <%= link_to("admin #{comment.user.name}", user_admin_url(comment.user), :class => "btn btn-mini") %>
-                  <%= link_to "Edit", "../edit_comment/#{comment.id}", :class => "btn btn-warning btn-mini" %>
+                 By <%= link_to("<i class='icon-pencil'></i>".html_safe, user_admin_url(comment.user)) %>
+
+                  <%= user_link(comment.user) %>
                 </td>
               </tr>
               <% comment.for_admin_column do |name, value, type, column_name |%>
@@ -284,6 +292,7 @@
     <p>None (perhaps this is an old or a very new request)</p>
 <% end %>
 
+<hr>
 <h2>Censor rules</h2>
 <%= render :partial => 'admin_censor_rule/show', :locals => { :censor_rules => @info_request.censor_rules, :info_request => @info_request } %>
 
