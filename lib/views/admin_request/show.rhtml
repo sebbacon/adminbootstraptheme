@@ -82,7 +82,7 @@
 
 <%= link_to 'Public page', main_url(request_url(@info_request)), :class => "btn" %>
 <%= link_to 'Edit', '../edit/' + @info_request.id.to_s, :class => "btn" %>
-<%= link_to 'FOI officer upload URL', '../generate_upload_url/' + @info_request.id.to_s, :class => "btn btn-warning" %> (see also links on incoming messages below)
+<%= link_to 'Generate FOI officer upload URL', '../generate_upload_url/' + @info_request.id.to_s, :class => "btn btn-warning" %> (see also links on incoming messages below)
 <hr>
 <h2>Events</h2>
 <div class="accordion" id="events">

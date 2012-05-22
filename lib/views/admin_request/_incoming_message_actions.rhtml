@@ -12,7 +12,7 @@
 <% end %>
 
 <p>
-<%= link_to 'FOI officer upload URL', "../generate_upload_url/#{incoming_message.info_request.id}?incoming_message_id=#{incoming_message.id}", :class => "btn" %>
+<%= link_to 'Generate FOI officer upload URL', "../generate_upload_url/#{incoming_message.info_request.id}?incoming_message_id=#{incoming_message.id}", :class => "btn" %>
 </p>
 
 <% form_tag '../destroy_incoming', :class => "form form-inline" do %>
