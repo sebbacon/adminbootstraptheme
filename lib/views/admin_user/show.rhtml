@@ -50,15 +50,19 @@
 
 <%= link_to 'Edit', '../edit/' + @admin_user.id.to_s, :class => "btn btn-primary" %>
 <%= link_to 'Public page', main_url(user_url(@admin_user)), :class => "btn" %>
-<%= link_to "Log in as #{@admin_user.name}", "../login_as/#{@admin_user.id}", :class => "btn btn-info" %> <span class="label label-warning">also confirms their email</span>
+<%= link_to "Log in as #{@admin_user.name} (also confirms their email)", "../login_as/#{@admin_user.id}", :class => "btn btn-info" %>
 </p>
+
+<hr>
 
 <h2>Track things</h2>
 <%= render :partial => 'admin_track/some_tracks', :locals => { :track_things => @admin_user.track_things } %>
 
+<hr>
+
 <h2>Post redirects</h2>
 
-<table>
+<table class="table table-condensed table-striped">
   <tr>
   <th>Id</th>
   <% for column in PostRedirect.content_columns %>
@@ -80,8 +84,12 @@
 <% end %>
 </table>
 
+<hr>
+
 <h2>Requests</h2>
 <%= render :partial => 'admin_request/some_requests', :locals => { :info_requests => @admin_user.info_requests } %>
+
+<hr>
 
 <h2>Censor rules</h2>
 <%= render :partial => 'admin_censor_rule/show', :locals => { :censor_rules => @admin_user.censor_rules, :user => @admin_user } %>
