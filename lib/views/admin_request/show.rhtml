@@ -205,9 +205,6 @@
             <tr>
               <td colspan="2" class="well">
                 <%= render :partial => 'incoming_message_actions', :locals => { :incoming_message => incoming_message } %>
-                <% unless incoming_message.raw_email_id.nil? %>
-                  <br><%= link_to "View raw email", "../show_raw_email/#{incoming_message.raw_email_id}", :class => "btn" %>
-                <% end %>
               </td>
             </tr>
           </thead>
