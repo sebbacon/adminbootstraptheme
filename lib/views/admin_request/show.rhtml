@@ -79,10 +79,51 @@
     </tbody>
   </table>
 <% end %>
+<formset class="form-horizontal">
+ <legend>Actions</legend>
+ <div class="control-group">
+   <label class="control-label">
+     Other views of this request
+   </label>
+   <div class="controls">
+    <%= link_to 'Public page', main_url(request_url(@info_request)), :class => "btn" %>
+    <%= link_to 'Edit page', '../edit/' + @info_request.id.to_s, :class => "btn" %>
+   </div>
+  </div>
+  <div class="control-group">
+   <label class="control-label">
+     FOI officer upload URL
+   </label>
+   <div class="controls">
+    <%= link_to 'Generate URL', '../generate_upload_url/' + @info_request.id.to_s, :class => "btn" %>
+    <p class="help-block">(see also option to general URLs for individual incoming messages below)</p>
+   </div>
+  </div>
+   <% form_tag '../hide/' + @info_request.id.to_s, :class => "form form-inline", :info_request_id => @info_request.id.to_s, :id => "hide_request_form" do %>
+    <div class="control-group">
+    <label class="control-label">Hide the request and notify the user:</label>
 
-<%= link_to 'Public page', main_url(request_url(@info_request)), :class => "btn" %>
-<%= link_to 'Edit', '../edit/' + @info_request.id.to_s, :class => "btn" %>
-<%= link_to 'Generate FOI officer upload URL', '../generate_upload_url/' + @info_request.id.to_s, :class => "btn btn-warning" %> (see also links on incoming messages below)
+     <div class="controls" id="request_hidden_user_explanation_reasons">
+      <label class="radio inline">
+       <%= radio_button_tag "reason", "not_foi" %> <%= _("Not a valid FOI request") %>
+      </label>
+      <label class="radio inline">
+       <%= radio_button_tag "reason", "vexatious" %> <%= _("A vexatious request") %>
+      </label>
+     </div>
+    </div>
+    <div class="control-group" id="request_hidden_user_explanation">
+     <label for="request_hidden_user_explanation_field" class="control-label">Reason for hiding the request (will be emailed to user):</label>
+     <div class="controls">
+         <%= text_area_tag "explanation", h(@request_hidden_user_explanation), {:id => "request_hidden_user_explanation_field"} %>
+     </div>
+    </div>
+    <div class="form-actions">
+     <%= submit_tag _("Hide request"), :class => "btn" %>
+    </div>
+   <% end %>
+</formset>
+
 <hr>
 <h2>Events</h2>
 <div class="accordion" id="events">
@@ -196,7 +237,9 @@
           <%=incoming_message.id%> -- <%= h(incoming_message.mail_from) %> <%=_("at")%> <%=admin_value(incoming_message.sent_at)%>
         </a>
 	<blockquote class="incoming-message">
+	  <% if !incoming_message.cached_main_body_text_folded.nil? %>
 	  <%= truncate(incoming_message.cached_main_body_text_folded.gsub('FOLDED_QUOTED_SECTION', ''), :length => 400) %>
+         <% end %>
 	</blockquote>
       </div>
       <div id="incoming_<%=incoming_message.id%>" class="accordion-body collapse">
