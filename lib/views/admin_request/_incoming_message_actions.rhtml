@@ -21,24 +21,40 @@
   </div>
  </div>
 
-<% form_tag '../destroy_incoming', :class => "form form-inline" do %>
- <div class="control-group">
-  <label class="control-label" for="generate_upload_url">Destroy message</label>
-  <div class="controls">
-   <%= hidden_field_tag 'incoming_message_id', incoming_message.id %>
-   <%= submit_tag "Destroy message", :class => "btn btn-danger", :confirm => "This is permanent! Are you sure?" %>
+ <% form_tag '../destroy_incoming', :class => "form form-inline" do %>
+  <div class="control-group">
+   <label class="control-label" for="generate_upload_url">Destroy message</label>
+   <div class="controls">
+    <%= hidden_field_tag 'incoming_message_id', incoming_message.id %>
+    <%= submit_tag "Destroy message", :class => "btn btn-danger", :confirm => "This is permanent! Are you sure?" %>
+   </div>
   </div>
- </div>
-<% end %>
+ <% end %>
 
-<% if @raw_email.nil? %>
- <%# we're not on the raw_email page itself %>
+ <% form_tag '../copy_incoming', :class => "form form-inline" do %>
  <div class="control-group">
-  <label class="control-label" for="show_rail_email">Inspect email</label>
+  <label class="control-label" for="url_title">Clone message to another request (id or url_title)</label>
   <div class="controls">
-    <%= link_to "View raw email", "../show_raw_email/#{incoming_message.raw_email_id}", :class => "btn", :id => "show_raw_email" %>
+      <% if @info_requests && @info_requests.size == 1 %>
+        <%= text_field_tag 'clone_url_title', @info_requests[0].url_title, { :size => 20 } %>
+      <% else %>
+        <%= text_field_tag 'clone_url_title', "", { :size => 20 } %>
+      <% end %>
+      <%= submit_tag "Clone to another request", :class => "btn" %>
+      <p class="help-block">This will clone the incoming message to another request, and mark that request as "complete"</p>
+      <%= hidden_field_tag 'copy_incoming_message_id', incoming_message.id %>
   </div>
  </div>
-<% end %>
+ <% end %>
+
+ <% if @raw_email.nil? %>
+  <%# we're not on the raw_email page itself %>
+  <div class="control-group">
+   <label class="control-label" for="show_rail_email">Inspect email</label>
+   <div class="controls">
+     <%= link_to "View raw email", "../show_raw_email/#{incoming_message.raw_email_id}", :class => "btn", :id => "show_raw_email" %>
+   </div>
+  </div>
+ <% end %>
 
 </formset>
