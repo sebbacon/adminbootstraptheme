@@ -34,17 +34,17 @@ table .form {
   } 
 }
 
-div.item-detail {
+div.item-detail { 
   div:nth-child(odd) span {
     background-color: #eee;
   }
 }
 
-span.label.tag{ 
+span.label.tag { 
  margin-right: 2px;
  a {
   color: white;
- }
+ } 
 }
 
 body.admin blockquote p {

@@ -10,9 +10,8 @@
     <% for track_thing in track_things %>
       <div class="accordion-group">
         <div class="accordion-heading">
-          <a class="accordion-toggle" href="#track_<%=track_thing.id%>" data-toggle="collapse" data-parent="tracks">
+         <a href="#track_<%=track_thing.id%>" data-toggle="collapse" data-parent="requests"><i class="icon-chevron-right"></i></a>
              <%=track_thing.id%>: <code><%=track_thing.track_query%></code> <% if @admin_user.nil? %>tracked by <%=track_thing.tracking_user.email%> (<%=track_thing.tracking_user.name%>)<% end %>
-          </a>
         </div>
         <div id="track_<%=track_thing.id%>" class="accordion-body collapse">
           <table class="table table-striped table-condensed">
@@ -20,7 +19,7 @@
              <% if @admin_user.nil? %>
               <tr>
                 <td colspan="2">
-                  <%=link_to h(track_thing.tracking_user.name), main_url(user_url(track_thing.tracking_user)), :class => "btn" %> <%=link_to _("admin") + " " + h(track_thing.tracking_user.name), user_admin_url(track_thing.tracking_user), :class => "btn btn-success" %>
+                  <%=link_to '<i class="icon-eye-open"></i>'.html_safe, main_url(user_url(track_thing.tracking_user)) %> <%=link_to h(track_thing.tracking_user.name), user_admin_url(track_thing.tracking_user) %>
                 </td>
               </tr>
               <% end %>

@@ -1,7 +1,11 @@
 (function() {
-  (function($) {
-    $(document).ready(function() {
-      return $('.locales a:first').tab('show');
+  jQuery(function() {
+    $('.locales a:first').tab('show');
+    $('.accordion-body').on('hidden', function() {
+      return $(this).prev().find('i').first().removeClass().addClass('icon-chevron-right');
+    });
+    $('.accordion-body').on('shown', function() {
+      return $(this).prev().find('i').first().removeClass().addClass('icon-chevron-down');
     });
     $('.toggle-hidden').live('click', function() {
       $(this).parents('td').find('div:hidden').show();
@@ -24,5 +28,5 @@
         }
       });
     });
-  })(jQuery);
+  });
 }).call(this);

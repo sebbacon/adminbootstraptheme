@@ -3,10 +3,8 @@
     <div class="accordion-group">
       <div class="accordion-heading accordion-toggle row">
        <span class="item-title span6">
-        <%= link_to('<i class="icon-tags"></i>'.html_safe, public_body_admin_url(public_body), :title => "view full details")%>
-        <a href="#body_<%=public_body.id%>" data-toggle="collapse" data-parent="bodies">
-          <%=public_body.name%>
-        </a>
+        <a href="#body_<%=public_body.id%>" data-toggle="collapse" data-parent="requests"><i class="icon-chevron-right"></i></a>
+        <%= link_to(public_body.name, public_body_admin_url(public_body), :title => "view full details")%>
        </span>
        <span class="item-metadata span6">
          <%= render :partial => 'tags', :locals => { :body => public_body} %>

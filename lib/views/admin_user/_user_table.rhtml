@@ -3,13 +3,11 @@
     <div class="accordion-group">
       <div class="accordion-heading accordion-toggle">
        <span class="item-title">
-        <%= link_to('<i class="icon-tags"></i>'.html_safe, user_admin_url(user))%>
+        <a href="#user_<%=user.id%>" data-toggle="collapse" data-parent="requests"><i class="icon-chevron-right"></i></a>
 	 <% if user.admin_level == "super" %>
           <span class="label">superuser</span>
 	 <% end %>
-        <a href="#user_<%=user.id%>" data-toggle="collapse" data-parent="users">
-          <%=h user.name%> (<%=user.email%>)
-        </a>
+        <%= link_to("#{h(user.name)} (#{user.email})", user_admin_url(user))%>
        </span>
        <span class="item-metadata">
 	 updated <%=I18n.l(user.updated_at, :format => "%e %B %Y %H:%M:%S")%>
