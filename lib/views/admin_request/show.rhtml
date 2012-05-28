@@ -102,16 +102,20 @@
    <% form_tag '../hide/' + @info_request.id.to_s, :class => "form form-inline", :info_request_id => @info_request.id.to_s, :id => "hide_request_form" do %>
     <div class="control-group">
     <label class="control-label">Hide the request and notify the user:</label>
-
      <div class="controls" id="request_hidden_user_explanation_reasons">
+     <% if ['hidden', 'requester_only'].include? @info_request.prominence %>
+       <p class="help-block">This request has already been hidden</p>
+     <% else %>
       <label class="radio inline">
        <%= radio_button_tag "reason", "not_foi" %> <%= _("Not a valid FOI request") %>
       </label>
       <label class="radio inline">
        <%= radio_button_tag "reason", "vexatious" %> <%= _("A vexatious request") %>
       </label>
+     <% end %>
      </div>
     </div>
+    <% if !['hidden', 'requester_only'].include? @info_request.prominence %>
     <div class="control-group" id="request_hidden_user_explanation">
      <label for="request_hidden_user_explanation_field" class="control-label">Reason for hiding the request (will be emailed to user):</label>
      <div class="controls">
@@ -121,6 +125,7 @@
     <div class="form-actions">
      <%= submit_tag _("Hide request"), :class => "btn" %>
     </div>
+    <% end %>
    <% end %>
 </formset>
 
