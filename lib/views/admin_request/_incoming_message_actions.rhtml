@@ -2,7 +2,7 @@
  <legend>Actions</legend>
  <% form_tag '../redeliver_incoming', :class => "form form-inline" do %>
  <div class="control-group">
-  <label class="control-label" for="url_title">Redeliver message to another request (id or url_title)</label>
+  <label class="control-label" for="url_title">Redeliver message to one or more other requests</label>
   <div class="controls">
       <% if @info_requests && @info_requests.size == 1 %>
         <%= text_field_tag 'url_title', @info_requests[0].url_title, { :size => 20 } %>
@@ -11,6 +11,7 @@
       <% end %>
       <%= hidden_field_tag 'redeliver_incoming_message_id', incoming_message.id %>
       <%= submit_tag "Redeliver to another request", :class => "btn" %>
+      <p class="help-block"><code>id</code> or <code>url_title</code>; you can supply more than one, separated by commas</p>
   </div>
  </div>
  <% end %>
