@@ -4,6 +4,14 @@
 
 <% form_tag '../move_request', { :class => "form form-horizontal" } do %>
   <%= hidden_field_tag 'info_request_id', @info_request.id %>
+<div class="accordion" id="info_request">
+ <div class="accordion-group">
+ <div class="accordion-heading">
+  <span class="item-title">
+    <a href="#metadata_<%=@info_request.id%>" data-toggle="collapse" data-parent="info_request"><i class="icon-chevron-right"></i></a>Show metadata
+  </span>
+ </div>
+ <div id="metadata_<%=@info_request.id%>" class="accordion-body collapse">
   <table class="table table-striped table-condensed">
     <tbody>
       <% @info_request.for_admin_column do |name, value, type, column_name|%>
@@ -77,6 +85,9 @@
       </tr>
     </tbody>
   </table>
+ </div>
+ </div>
+</div>
 <% end %>
 <formset class="form-horizontal">
  <legend>Actions</legend>
