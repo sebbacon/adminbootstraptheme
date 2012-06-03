@@ -15,7 +15,7 @@
     });
     return $('#request_hidden_user_explanation_reasons input').live('click', function() {
       var info_request_id, reason;
-      $('#request_hidden_user_explanation').show();
+      $('#request_hidden_user_subject, #request_hidden_user_explanation').show();
       info_request_id = $('#hide_request_form').attr('info_request_id');
       reason = $(this).val();
       $('#request_hidden_user_explanation_field').attr("value", "[loading default text...]");

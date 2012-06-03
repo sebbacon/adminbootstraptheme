@@ -126,15 +126,21 @@
      </div>
     </div>
     <% if !['hidden', 'requester_only'].include? @info_request.prominence %>
-    <div class="control-group" id="request_hidden_user_explanation">
-     <label for="request_hidden_user_explanation_field" class="control-label">Reason for hiding the request (will be emailed to user):</label>
-     <div class="controls">
-         <%= text_area_tag "explanation", h(@request_hidden_user_explanation), {:id => "request_hidden_user_explanation_field"} %>
-     </div>
-    </div>
-    <div class="form-actions">
-     <%= submit_tag _("Hide request"), :class => "btn" %>
-    </div>
+      <div class="control-group" id="request_hidden_user_subject">
+        <label for="request_hidden_user_subject_field" class="control-label">Subject of email:</label>
+        <div class="controls">
+          <%= text_field_tag "subject", "Your request on WhatDoTheyKnow.com hidden", {:id => "request_hidden_user_subject_field", :cols => 100} %>
+        </div>
+      </div>
+      <div class="control-group" id="request_hidden_user_explanation">
+        <label for="request_hidden_user_explanation_field" class="control-label">Reason for hiding the request (will be emailed to user):</label>
+        <div class="controls">
+          <%= text_area_tag "explanation", h(@request_hidden_user_explanation), {:id => "request_hidden_user_explanation_field"} %>
+        </div>
+      </div>
+      <div class="form-actions">
+        <%= submit_tag _("Hide request"), :class => "btn" %>
+      </div>
     <% end %>
    <% end %>
 </formset>
