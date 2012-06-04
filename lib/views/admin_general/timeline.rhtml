@@ -97,7 +97,7 @@
         <% end %>
     <% else %>
         <%= link_to('<i class="icon-tags"></i>'.html_safe, public_body_admin_url(event.public_body), :title => "view full details")%>
-        <%= link_to(event.public_body.name, public_body_url(event.public_body), :title => "view authority on public website")%>
+        <%= link_to(event.public_body.name, main_url(public_body_url(event.public_body)), :title => "view authority on public website")%>
         was created/updated by administrator <strong><%=h event.last_edit_editor %></strong>
     <% end %>
 <% end %>
