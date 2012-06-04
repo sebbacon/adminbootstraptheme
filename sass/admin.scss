@@ -70,3 +70,8 @@ div#user_locale_switcher {
 #request_hidden_user_explanation {
  display: none;
 }
+
+#outgoing_message_body,
+#comment_body {
+  width: 750px;
+}
