@@ -8,7 +8,7 @@
   <div class="accordion-group">
     <div class="accordion-heading">
       <span class="item-title">
-        <a href="#metadata_<%=@info_request.id%>" data-toggle="collapse" data-parent="info_request"><i class="icon-chevron-right"></i></a>Show metadata
+        <a href="#metadata_<%=@info_request.id%>" data-toggle="collapse" data-parent="#info_request"><i class="icon-chevron-right"></i></a>Show metadata
       </span>
     </div>
     <div id="metadata_<%=@info_request.id%>" class="accordion-body collapse">
@@ -152,7 +152,7 @@
     <div class="accordion-group">
       <div class="accordion-heading">
         <span class="item-title">
-        <a href="#event_<%=info_request_event.id%>" data-toggle="collapse" data-parent="requests"><i class="icon-chevron-right"></i></a>
+        <a href="#event_<%=info_request_event.id%>" data-toggle="collapse" data-parent="#events"><i class="icon-chevron-right"></i></a>
           <%= _("Event {{id}}", :id => info_request_event.id) %>:
           <strong>
             <%=h info_request_event.event_type.humanize %><% if !info_request_event.calculated_state.nil? %>; state: <%= info_request_event.calculated_state %><% end %>
@@ -209,8 +209,8 @@
   <% for outgoing_message in @info_request.outgoing_messages.find(:all, :order => 'created_at') %>
     <div class="accordion-group">
       <div class="accordion-heading">
-        <a href="#outgoing_<%=outgoing_message.id%>" data-toggle="collapse" data-parent="requests"><i class="icon-chevron-right"></i></a>
-        <a href="../edit_outgoing/<%= outgoing_message.id %>" data-toggle="collapse" data-parent="outgoing_messages">
+        <a href="#outgoing_<%=outgoing_message.id%>" data-toggle="collapse" data-parent="#outgoing_messages"><i class="icon-chevron-right"></i></a>
+        <a href="../edit_outgoing/<%= outgoing_message.id %>">
           #<%= outgoing_message.id %> -- <%= outgoing_message.status.humanize %> <%= outgoing_message.message_type.humanize %>
         </a>
         <blockquote>
@@ -251,11 +251,11 @@
 </div>
 <hr>
 <h2>Incoming messages</h2>
-<div class="accordion">
+<div class="accordion" id="incoming_messages">
   <% for incoming_message in @info_request.incoming_messages.find(:all, :order => 'created_at') %>
     <div class="accordion-group">
       <div class="accordion-heading">
-        <a href="#incoming_<%=incoming_message.id%>" data-toggle="collapse" data-parent="requests"><i class="icon-chevron-right"></i></a>
+        <a href="#incoming_<%=incoming_message.id%>" data-toggle="collapse" data-parent="#incoming_messages"><i class="icon-chevron-right"></i></a>
         <%=incoming_message.id%> -- <%= h(incoming_message.mail_from) %> <%=_("at")%> <%=admin_value(incoming_message.sent_at)%>
         <blockquote class="incoming-message">
           <% if !incoming_message.cached_main_body_text_folded.nil? %>
@@ -302,7 +302,7 @@
     <% for comment in @info_request.comments %>
       <div class="accordion-group">
         <div class="accordion-heading">
-         <a href="#comment_<%=comment.id%>" data-toggle="collapse" data-parent="requests"><i class="icon-chevron-right"></i></a>
+         <a href="#comment_<%=comment.id%>" data-toggle="collapse" data-parent="#comments"><i class="icon-chevron-right"></i></a>
           <a href="../edit_comment/<%= comment.id %>">
             #<%=comment.id%>
             --
