@@ -57,7 +57,7 @@
               <b>Public authority:</b>
             </td>
             <td>
-              <%= link_to("<i class='icon-eye-open'></i>".html_safe, public_body_url(@info_request.public_body), :title => "view authority on public website") %>
+              <%= link_to("<i class='icon-eye-open'></i>".html_safe, main_url(public_body_url(@info_request.public_body)), :title => "view authority on public website") %>
               <%= link_to(@info_request.public_body.name, public_body_admin_url(@info_request.public_body)) %>
               <%= link_to "move...", "#", :class => "btn btn-mini btn-warning toggle-hidden" %>
               <div style="display:none;">
