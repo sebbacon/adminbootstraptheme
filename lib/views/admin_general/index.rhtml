@@ -122,7 +122,7 @@
               <tr>
                 <td class="link">
                   <%= link_to('<i class="icon-tags"></i>'.html_safe, public_body_admin_url(@blank_contact))%>
-                  <%= public_body_link(@blank_contact)%>
+                  <%= link_to h(@blank_contact.name), main_url(public_body_url(@blank_contact)) %>
                 </td>
                 <td class="span2">
                   <%=simple_date(@blank_contact.updated_at)%>
