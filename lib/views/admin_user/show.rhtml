@@ -56,7 +56,7 @@
 <hr>
 
 <h2>Track things</h2>
-<%= render :partial => 'admin_track/some_tracks', :locals => { :track_things => @admin_user.track_things } %>
+<%= render :partial => 'admin_track/some_tracks', :locals => { :track_things => @admin_user.track_things, :include_destroy => true } %>
 
 <hr>
 
