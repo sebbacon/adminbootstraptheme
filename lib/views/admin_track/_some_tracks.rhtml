@@ -19,7 +19,7 @@
              <% if @admin_user.nil? %>
               <tr>
                 <td colspan="2">
-                  <%=link_to '<i class="icon-eye-open"></i>'.html_safe, main_url(user_url(track_thing.tracking_user)) %> <%=link_to h(track_thing.tracking_user.name), user_admin_url(track_thing.tracking_user) %>
+                  <%=link_to '<i class="icon-eye-open"></i>'.html_safe, user_admin_url(track_thing.tracking_user) %> <%=link_to h(track_thing.tracking_user.name), main_url(user_url(track_thing.tracking_user)) %>
                 </td>
               </tr>
               <% end %>
