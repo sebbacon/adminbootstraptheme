@@ -32,7 +32,7 @@
 
     <% if event.class.to_s == 'InfoRequestEvent' %>
         <%= link_to('<i class="icon-tags"></i>'.html_safe, request_admin_url(event.info_request), :title => "view full details")%>
-        <%= link_to(event.info_request.title, request_url(event.info_request), :title => "view request on public website")%>
+        <%= link_to(event.info_request.title, main_url(request_url(event.info_request)), :title => "view request on public website")%>
 
         <% if event.event_type == 'edit' %>
             was edited by administrator <strong><%=h event.params[:editor] %></strong>.
