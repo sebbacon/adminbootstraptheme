@@ -16,6 +16,8 @@ end
 end
 
 # Monkey patch app code
-for patch in ['controller_patches.rb', 'model_patches.rb', 'config/custom-routes.rb']
+for patch in ['controller_patches.rb', 'model_patches.rb']
     require File.expand_path "../#{patch}", __FILE__
 end
+
+$alaveteli_route_extensions << 'adminbootstrap-routes.rb'
