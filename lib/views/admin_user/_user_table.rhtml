@@ -7,7 +7,8 @@
 	 <% if user.admin_level == "super" %>
           <span class="label">superuser</span>
 	 <% end %>
-        <%= link_to("#{h(user.name)} (#{user.email})", user_admin_url(user))%>
+        <%= link_to("#{h(user.name)}", user_admin_url(user))%>
+        <%= link_to("(#{h(user.email)})", "mailto:#{h(user.email)}")%>
        </span>
        <span class="item-metadata">
 	 updated <%=I18n.l(user.updated_at, :format => "%e %B %Y %H:%M:%S")%>
