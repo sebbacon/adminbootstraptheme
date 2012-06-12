@@ -7,6 +7,12 @@
 require 'dispatcher'
 
 Dispatcher.to_prepare do
+    GeneralController.class_eval do
+        def admin_js
+          render :layout => false, :content_type => "application/javascript"
+        end
+    end
+    
     AdminGeneralController.class_eval do
         def stats
             # Overview counts of things
