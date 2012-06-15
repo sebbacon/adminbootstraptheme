@@ -9,7 +9,7 @@ jQuery ->
         $(@).parents('td').find('div:hidden').show()
         false)
     $('#request_hidden_user_explanation_reasons input').live('click', ->
-        $('#request_hidden_user_subject, #request_hidden_user_explanation').show()
+        $('#request_hidden_user_subject, #request_hidden_user_explanation, #request_hide_button').show()
         info_request_id = $('#hide_request_form').attr('info_request_id')
         reason = $(this).val()
         $('#request_hidden_user_explanation_field').attr("value", "[loading default text...]")
