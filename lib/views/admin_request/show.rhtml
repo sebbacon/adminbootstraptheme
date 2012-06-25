@@ -8,12 +8,23 @@
   <div class="accordion-group">
     <div class="accordion-heading">
       <span class="item-title">
-        <a href="#metadata_<%=@info_request.id%>" data-toggle="collapse" data-parent="#info_request"><i class="icon-chevron-right"></i></a>Show metadata
+        <a href="#metadata_<%=@info_request.id%>" data-toggle="collapse" data-parent="#info_request"><i class="icon-chevron-down"></i></a>Request metadata
       </span>
     </div>
-    <div id="metadata_<%=@info_request.id%>" class="accordion-body collapse">
+    <div id="metadata_<%=@info_request.id%>" class="accordion-body collapse in">
       <table class="table table-striped table-condensed">
+	<thead>
+	  <tr>
+	    <td colspan="2">
+	      <%= link_to 'Edit metadata', '../edit/' + @info_request.id.to_s, :class => "btn" %>
+	    </td>
+	  </tr>
+	</thead>
         <tbody>
+          <tr>
+	    <th>Public page:</th>
+	    <td>main_url(request_url(@info_request))</td>
+	  </tr>
           <% @info_request.for_admin_column do |name, value, type, column_name|%>
             <tr>
               <td>
@@ -84,6 +95,13 @@
             </td>
           </tr>
         </tbody>
+	<tfoot>
+	  <tr>
+	    <td colspan="2">
+	      <%= link_to 'Edit metadata', '../edit/' + @info_request.id.to_s, :class => "btn" %>
+	    </td>
+	  </tr>
+	</tfoot>
       </table>
     </div>
   </div>
@@ -91,15 +109,6 @@
 <% end %>
 <formset class="form-horizontal">
   <legend>Actions</legend>
-  <div class="control-group">
-    <label class="control-label">
-      Other views of this request
-    </label>
-    <div class="controls">
-      <%= link_to 'Public page', main_url(request_url(@info_request)), :class => "btn" %>
-      <%= link_to 'Edit page', '../edit/' + @info_request.id.to_s, :class => "btn" %>
-    </div>
-  </div>
   <div class="control-group">
     <label class="control-label">
       FOI officer upload URL
