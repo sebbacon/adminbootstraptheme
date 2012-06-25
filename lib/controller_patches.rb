@@ -30,4 +30,12 @@ Dispatcher.to_prepare do
             @tracks_by_type = TrackThing.count(:group => 'track_type')
         end
     end
+    AdminTrackController.class_eval do
+        def list
+            @query = params[:query]
+            @admin_tracks = TrackThing.paginate :order => "created_at desc", :page => params[:page], :per_page => 100,
+            :conditions =>  @query.nil? ? nil : ["lower(track_query) like lower('%'||?||'%')", @query ]
+            @popular = ActiveRecord::Base.connection.select_all("select count(*) as count, title, info_request_id from track_things join info_requests on info_request_id = info_requests.id where info_request_id is not null group by info_request_id, title order by count desc limit 10;")
+        end
+    end
 end

@@ -10,3 +10,11 @@
 <%= render :partial => 'some_tracks', :locals => { :track_things => @admin_tracks } %>
 
 <%= will_paginate(@admin_tracks, :class => "paginator" ) %>
+
+<h2>Current top tracks:</h2>
+<ol>
+<% for row in @popular %>
+  <li><%= link_to row['title'], admin_url('request/show/' + row['info_request_id']) %> (<%= row['count'] %> people following)</li>
+<% end %>
+</ol>
+
