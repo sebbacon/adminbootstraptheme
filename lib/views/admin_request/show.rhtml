@@ -53,14 +53,20 @@
               <b>Created by</b>
             </td>
             <td>
-              <%= link_to("<i class='icon-eye-open'></i>".html_safe, user_url(@info_request.user), :title => "view user's page on public website") %>
-              <%= link_to(@info_request.user.name, user_admin_url(@info_request.user)) %>
-              <%= link_to _("move..."), "#", :class => "btn btn-mini btn-warning toggle-hidden" %>
-              <div style="display:none;">
-                <strong>url_name of new user:</strong>
-                <%= text_field_tag 'user_url_name', "", { :size => 20 } %>
-                <%= submit_tag "Move request to user", :class => "btn btn-info" %>
-              </div>
+	      <% if @info_request.is_external? %>
+                <%= link_to("<i class='icon-eye-open'></i>".html_safe, @info_request.external_url, :title => "view URL of original request on external website") %>
+                <%= @info_request.public_body.name %> on behalf of <%= @info_request.user_name %> (using API)
+	      <% else %>
+                <%= link_to("<i class='icon-eye-open'></i>".html_safe, user_url(@info_request.user), :title => "view user's page on public website") %>
+                <%= link_to(@info_request.user.name, user_admin_url(@info_request.user)) %>
+                <%= link_to _("move..."), "#", :class => "btn btn-mini btn-warning toggle-hidden" %>
+                <div style="display:none;">
+                  <strong>url_name of new user:</strong>
+                  <%= text_field_tag 'user_url_name', "", { :size => 20 } %>
+                  <%= submit_tag "Move request to user", :class => "btn btn-info" %>
+                </div>
+	      <% end %>
+
             </td>
           </tr>
           <tr>
