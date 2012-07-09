@@ -23,7 +23,7 @@
         <tbody>
           <tr>
 	    <th>Public page:</th>
-	    <td>main_url(request_url(@info_request))</td>
+	    <td><%= link_to main_url(request_url(@info_request)), main_url(request_url(@info_request)) %></td>
 	  </tr>
           <% @info_request.for_admin_column do |name, value, type, column_name|%>
             <tr>
