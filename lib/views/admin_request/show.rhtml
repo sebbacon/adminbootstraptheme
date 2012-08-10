@@ -42,7 +42,7 @@
               <b>Created by</b>
             </td>
             <td>
-              <%= link_to("<i class='icon-eye-open'></i>".html_safe, user_url(@info_request.user), :title => "view user's page on public website") %>
+              <%= link_to("<i class='icon-eye-open'></i>".html_safe, user_link_for_request(@info_request), :title => "view user's page on public website") %>
               <%= user_admin_link_for_request(@info_request) %>
               <%= link_to _("move..."), "#", :class => "btn btn-mini btn-warning toggle-hidden" %>
               <div style="display:none;">
