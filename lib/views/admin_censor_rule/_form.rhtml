@@ -14,15 +14,12 @@
 <% end %>
 </div>
 
-<p><label for="censor_rule_regexp">Is it regexp replacement?</label> (Leave unchecked if you are not sure about this)<br/>
-<%= check_box 'censor_rule', 'regexp' %></p>
-
 <div class="control-group">
   <label for="censor_rule_regexp" class="control-label">Is it regexp replacement?</label>
   <div class="controls">
-    <%= text_field 'censor_rule', 'regexp', :class => "span3" %>
+    <%= check_box 'censor_rule', 'regexp' %>
     <div class="help-block">
-      (Leave unchecked if you are not sure about this)
+      Leave unchecked if you are not sure about this
     </div>
   </div>
 </div>
