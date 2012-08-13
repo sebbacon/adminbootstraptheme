@@ -13,18 +13,18 @@
     </div>
     <div id="metadata_<%=@info_request.id%>" class="accordion-body collapse in">
       <table class="table table-striped table-condensed">
-	<thead>
-	  <tr>
-	    <td colspan="2">
-	      <%= link_to 'Edit metadata', '../edit/' + @info_request.id.to_s, :class => "btn" %>
-	    </td>
-	  </tr>
-	</thead>
+  <thead>
+    <tr>
+      <td colspan="2">
+        <%= link_to 'Edit metadata', '../edit/' + @info_request.id.to_s, :class => "btn" %>
+      </td>
+    </tr>
+  </thead>
         <tbody>
           <tr>
-	    <th>Public page:</th>
-	    <td><%= link_to main_url(request_url(@info_request)), main_url(request_url(@info_request)) %></td>
-	  </tr>
+      <th>Public page:</th>
+      <td><%= link_to main_url(request_url(@info_request)), main_url(request_url(@info_request)) %></td>
+    </tr>
           <% @info_request.for_admin_column do |name, value, type, column_name|%>
             <tr>
               <td>
@@ -53,20 +53,19 @@
               <b>Created by</b>
             </td>
             <td>
-	      <% if @info_request.is_external? %>
+        <% if @info_request.is_external? %>
                 <%= link_to("<i class='icon-eye-open'></i>".html_safe, @info_request.external_url, :title => "view URL of original request on external website") %>
                 <%= @info_request.public_body.name %> on behalf of <%= @info_request.user_name %> (using API)
-	      <% else %>
+        <% else %>
                 <%= link_to("<i class='icon-eye-open'></i>".html_safe, user_url(@info_request.user), :title => "view user's page on public website") %>
-                <%= link_to(@info_request.user.name, user_admin_url(@info_request.user)) %>
+                <%= user_admin_link_for_request(@info_request) %>
                 <%= link_to _("move..."), "#", :class => "btn btn-mini btn-warning toggle-hidden" %>
                 <div style="display:none;">
                   <strong>url_name of new user:</strong>
                   <%= text_field_tag 'user_url_name', "", { :size => 20 } %>
                   <%= submit_tag "Move request to user", :class => "btn btn-info" %>
                 </div>
-	      <% end %>
-
+        <% end %>
             </td>
           </tr>
           <tr>
@@ -101,13 +100,13 @@
             </td>
           </tr>
         </tbody>
-	<tfoot>
-	  <tr>
-	    <td colspan="2">
-	      <%= link_to 'Edit metadata', '../edit/' + @info_request.id.to_s, :class => "btn" %>
-	    </td>
-	  </tr>
-	</tfoot>
+  <tfoot>
+    <tr>
+      <td colspan="2">
+        <%= link_to 'Edit metadata', '../edit/' + @info_request.id.to_s, :class => "btn" %>
+      </td>
+    </tr>
+  </tfoot>
       </table>
     </div>
   </div>
