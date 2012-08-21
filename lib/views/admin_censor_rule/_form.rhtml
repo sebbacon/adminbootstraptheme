@@ -13,6 +13,17 @@
     <%= hidden_field 'censor_rule', 'user_id', { :value => user.id } %>
 <% end %>
 </div>
+
+<div class="control-group">
+  <label for="censor_rule_regexp" class="control-label">Is it regexp replacement?</label>
+  <div class="controls">
+    <%= check_box 'censor_rule', 'regexp' %>
+    <div class="help-block">
+      Leave unchecked if you are not sure about this
+    </div>
+  </div>
+</div>
+
 <div class="control-group">
   <label for="censor_rule_text" class="control-label">Text</label>
   <div class="controls">
@@ -57,6 +68,9 @@
       things by individual request or by user by adding the censor rule from the
       appropriate page.  If you need to redact across a whole
       authority, it will be easy enough to make code changes to add it, so do ask.
+      </p>
+      <p>
+         <strong>Regexp rules that are hard to process will really slow down request display.</strong> Please only use regexps if you really need to.
       </p>
     </div>
   </div>
