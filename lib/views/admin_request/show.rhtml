@@ -55,7 +55,7 @@
             <td>
           <% if @info_request.is_external? %>
                 <%= link_to("<i class='icon-eye-open'></i>".html_safe, @info_request.external_url, :title => "view URL of original request on external website") %>
-                <%= @info_request.public_body.name %> on behalf of <%= @info_request.user_name %> (using API)
+                <%= @info_request.public_body.name %> on behalf of <%= (@info_request.user_name || _('an anonymous user'))%> (using API)
           <% else %>
                 <%= link_to("<i class='icon-eye-open'></i>".html_safe, user_url(@info_request.user), :title => "view user's page on public website") %>
                 <%= user_admin_link_for_request(@info_request) %>
