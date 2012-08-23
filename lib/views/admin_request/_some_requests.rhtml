@@ -7,11 +7,7 @@
           <%= link_to(info_request.title, request_admin_url(info_request), :title => "view full details") %>
         </span>
         <span class="item-metadata span6">
-         <% if info_request.is_external? %>
-          <%= link_to("#{info_request.user_name}", info_request.external_url)%> 
-         <% else %>
-          <%= link_to("#{info_request.user.name}", user_admin_url(info_request.user))%> 
-         <% end %><i class="icon-arrow-right"></i> <%= link_to("#{info_request.public_body.name}", public_body_admin_url(info_request.public_body)) %>, <%= time_ago_in_words(info_request.updated_at) %> ago
+          <%= user_admin_link_for_request(info_request) %> <i class="icon-arrow-right"></i> <%= link_to("#{info_request.public_body.name}", public_body_admin_url(info_request.public_body)) %>, <%= time_ago_in_words(info_request.updated_at) %> ago
         </span>
       </div>
       <div id="request_<%=info_request.id%>" class="item-detail accordion-body collapse row">

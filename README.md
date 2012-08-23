@@ -20,4 +20,7 @@ To change it, edit the coffeescript at
 
     $ coffee -o /tmp/ -c lib/views/general/admin.coffee
     $ mv /tmp/admin.js lib/views/general/admin_js.erb
+    
+See 
+[tags](https://github.com/mysociety/adminbootstraptheme/tags) for the correct version of the code to use with your version of Alaveteli.
 
